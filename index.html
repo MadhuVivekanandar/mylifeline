@@ -29,7 +29,7 @@
       inset: 0;
       background: url('hands-forever.jpg') right center / cover no-repeat; /* hard crop to right side, couple stays dominant */ /* crop so couple stays on right side */ /* center-cropped to keep only the couple, leave sky/space around */
       opacity: 1;
-      filter: blur(2px); /* very light 5% blur */ /* light blur, image remains clear */ /* 20% strong blur */
+      filter: blur(5px); /* very light 5% blur */ /* light blur, image remains clear */ /* 20% strong blur */
       transform: scale(1.15); /* avoid edge cut after blur */
       z-index: -2;
     }
@@ -50,7 +50,7 @@
 
     .card {
       background: rgba(0,0,0,0.45);
-      backdrop-filter: blur(2px);
+      backdrop-filter: blur(4px);
       padding: 28px 22px;
       border-radius: 18px;
       max-width: 420px;
@@ -139,8 +139,12 @@
   </div>
 
   <script>
+  // Ensure DOM is ready before attaching events
+  document.addEventListener('DOMContentLoaded', () => {
     const noBtn = document.getElementById('noBtn');
     const yesBtn = document.getElementById('yesBtn');
+
+    if (!noBtn || !yesBtn) return; // safety guard
 
     // tease if he waits
     setTimeout(() => {
@@ -162,7 +166,7 @@
     yesBtn.addEventListener('click', () => {
       kissSound.play();
 
-      // REMOVE background image completely
+      // Remove background image and overlays
       document.body.classList.add('celebrate');
       document.body.innerHTML = '';
       document.body.style.background = '#fff0f5';
@@ -171,6 +175,47 @@
       // LOTS of hearts
       for (let i = 0; i < 80; i++) {
         setTimeout(() => {
-          const h = document.createElement('div')
+          const h = document.createElement('div');
+          h.className = 'heart';
+          h.innerText = '❤️';
+          h.style.left = Math.random() * 100 + 'vw';
+          h.style.fontSize = Math.random() * 24 + 24 + 'px';
+          document.body.appendChild(h);
+        }, i * 80);
+      }
+
+      // LOTS of umma emojis
+      const ummas = Array(35).fill('Umma 😘');
+      ummas.forEach((t, i) => {
+        setTimeout(() => {
+          const u = document.createElement('div');
+          u.className = 'umma';
+          u.innerText = t;
+          u.style.left = Math.random() * 80 + 10 + 'vw';
+          u.style.top = Math.random() * 80 + 10 + 'vh';
+          u.style.fontSize = Math.random() * 18 + 28 + 'px';
+          document.body.appendChild(u);
+        }, i * 200);
+      });
+
+      // final big message
+      setTimeout(() => {
+        const big = document.createElement('div');
+        big.style.position = 'fixed';
+        big.style.inset = '0';
+        big.style.display = 'flex';
+        big.style.alignItems = 'center';
+        big.style.justifyContent = 'center';
+        big.style.background = '#fff0f5';
+        big.style.fontSize = '3rem';
+        big.style.fontWeight = 'bold';
+        big.style.color = '#c9184a';
+        big.style.textAlign = 'center';
+        big.innerHTML = 'Umma 😘<br/>I will be your only Valentine ❤️';
+        document.body.appendChild(big);
+      }, 5000);
+    });
+  });
+</script>
 </body>
 </html>
