@@ -42,6 +42,12 @@
       z-index: -1;
     }
 
+    /* After YES: remove background image completely */
+    body.celebrate::before,
+    body.celebrate::after {
+      display: none;
+    }
+
     .card {
       background: rgba(0,0,0,0.45);
       backdrop-filter: blur(4px);
@@ -136,6 +142,7 @@
     const noBtn = document.getElementById('noBtn');
     const yesBtn = document.getElementById('yesBtn');
 
+    // tease if he waits
     setTimeout(() => {
       alert('Yovvvv 😄 YES sollu 💖');
     }, 20000);
@@ -154,48 +161,16 @@
 
     yesBtn.addEventListener('click', () => {
       kissSound.play();
+
+      // REMOVE background image completely
+      document.body.classList.add('celebrate');
       document.body.innerHTML = '';
-      document.body.style.background = '#fff0f5'; /* remove background image after YES */
+      document.body.style.background = '#fff0f5';
+      document.body.style.overflow = 'hidden';
 
-
-      for (let i = 0; i < 30; i++) {
+      // LOTS of hearts
+      for (let i = 0; i < 80; i++) {
         setTimeout(() => {
-          const h = document.createElement('div');
-          h.className = 'heart';
-          h.innerText = '❤️';
-          h.style.left = Math.random() * 100 + 'vw';
-          document.body.appendChild(h);
-        }, i * 150);
-      }
-
-      const ummas = ['Umma 😘','Umma 😘','Umma 😘','Umma 😘','Umma 😘'];
-      ummas.forEach((t, i) => {
-        setTimeout(() => {
-          const u = document.createElement('div');
-          u.className = 'umma';
-          u.innerText = t;
-          u.style.left = Math.random() * 60 + 20 + 'vw';
-          u.style.top = Math.random() * 60 + 20 + 'vh';
-          document.body.appendChild(u);
-        }, i * 600);
-      });
-
-      setTimeout(() => {
-        const big = document.createElement('div');
-        big.style.position = 'fixed';
-        big.style.inset = '0';
-        big.style.display = 'flex';
-        big.style.alignItems = 'center';
-        big.style.justifyContent = 'center';
-        big.style.background = 'rgba(255,240,245,0.9)';
-        big.style.fontSize = '2.8rem';
-        big.style.fontWeight = 'bold';
-        big.style.color = '#c9184a';
-        big.style.textAlign = 'center';
-        big.innerHTML = 'Umma 😘<br/>I will be your only Valentine ❤️';
-        document.body.appendChild(big);
-      }, 4500);
-    });
-  </script>
+          const h = document.createElement('div')
 </body>
 </html>
