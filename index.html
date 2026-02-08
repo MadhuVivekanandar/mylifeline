@@ -27,9 +27,10 @@
       content: "";
       position: fixed;
       inset: 0;
-      background: url('hands-forever.jpg') center center / cover no-repeat; /* open-source hands image */
+      background: url('hands-forever.jpg') center 60% / cover no-repeat; /* center-cropped to keep only the couple, leave sky/space around */
       opacity: 1;
-      transform: scale(1.05);
+      filter: blur(20px); /* 20% strong blur */
+      transform: scale(1.15); /* avoid edge cut after blur */
       z-index: -2;
     }
 
@@ -37,18 +38,18 @@
       content: "";
       position: fixed;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(15,23,42,0.2), rgba(15,23,42,0.5));
+      background: radial-gradient(circle at center, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.45) 70%);
       z-index: -1;
     }
 
     .card {
-      background: rgba(0,0,0,0.35); /* very transparent */
-      backdrop-filter: blur(1px);
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(4px);
       padding: 28px 22px;
       border-radius: 18px;
       max-width: 420px;
       width: 92%;
-      box-shadow: none;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
     }
 
     h1 {
@@ -118,7 +119,7 @@
 </head>
 <body>
   <div class="card">
-    <h1>Nats ❤️</h1>
+    <h1>Nats❤️</h1>
     <p>Through every high and low, every tear and smile, you never left my side.</p>
     <p>You chose me — even when I was hard to hold.</p>
     <div class="question">
@@ -136,7 +137,7 @@
     const yesBtn = document.getElementById('yesBtn');
 
     setTimeout(() => {
-      alert('YOVVV 😄 YES sollu 💖');
+      alert('Yovvvvv😄 YES sollu 💖');
     }, 20000);
 
     noBtn.addEventListener('mouseenter', () => {
