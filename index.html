@@ -27,9 +27,9 @@
       content: "";
       position: fixed;
       inset: 0;
-      background: url('hands-forever.jpg') right 60% / cover no-repeat; /* crop so couple stays on right side */ /* center-cropped to keep only the couple, leave sky/space around */
+      background: url('hands-forever.jpg') right center / cover no-repeat; /* hard crop to right side, couple stays dominant */ /* crop so couple stays on right side */ /* center-cropped to keep only the couple, leave sky/space around */
       opacity: 1;
-      filter: blur(20px); /* 20% strong blur */
+      filter: blur(6px); /* light blur, image remains clear */ /* 20% strong blur */
       transform: scale(1.15); /* avoid edge cut after blur */
       z-index: -2;
     }
