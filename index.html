@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>For My Forever</title>
+
   <style>
     * {
       margin: 0;
@@ -17,7 +18,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #0f172a; /* deep romantic navy */
+      background: #0f172a;
       color: #ffffff;
       text-align: center;
       overflow: hidden;
@@ -27,10 +28,9 @@
       content: "";
       position: fixed;
       inset: 0;
-      background: url('hands-forever.jpg') right center / cover no-repeat; /* hard crop to right side, couple stays dominant */ /* crop so couple stays on right side */ /* center-cropped to keep only the couple, leave sky/space around */
-      opacity: 1;
-      filter: blur(5px); /* very light 5% blur */ /* light blur, image remains clear */ /* 20% strong blur */
-      transform: scale(1.15); /* avoid edge cut after blur */
+      background: url('hands-forever.jpg') right center / cover no-repeat;
+      filter: blur(5px);
+      transform: scale(1.15);
       z-index: -2;
     }
 
@@ -38,11 +38,10 @@
       content: "";
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at center, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.45) 70%);
+      background: radial-gradient(circle at center, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
       z-index: -1;
     }
 
-    /* After YES: remove background image completely */
     body.celebrate::before,
     body.celebrate::after {
       display: none;
@@ -61,7 +60,6 @@
     h1 {
       font-size: 2.3rem;
       margin-bottom: 16px;
-      color: #ffffff;
       text-shadow: 0 4px 12px rgba(0,0,0,0.6);
     }
 
@@ -69,18 +67,14 @@
       font-size: 1.1rem;
       line-height: 1.7;
       margin-bottom: 14px;
-      color: #ffffff;
       text-shadow: 0 2px 8px rgba(0,0,0,0.6);
     }
 
     .question {
       font-size: 1.35rem;
       margin: 18px 0;
-      color: #ffffff;
       text-shadow: 0 2px 10px rgba(0,0,0,0.7);
     }
-
-    .buttons { margin-top: 20px; }
 
     button {
       padding: 12px 26px;
@@ -96,126 +90,130 @@
 
     .heart {
       position: fixed;
-      font-size: 2.2rem;
+      font-size: 2rem;
       animation: floatUp 4s linear forwards;
     }
 
     @keyframes floatUp {
-      from { transform: translateY(100vh) scale(0.8); opacity: 1; }
-      to   { transform: translateY(-10vh) scale(1.4); opacity: 0; }
+      from { transform: translateY(100vh); opacity: 1; }
+      to   { transform: translateY(-10vh); opacity: 0; }
     }
 
     .umma {
       position: fixed;
       font-size: 2.5rem;
       color: #d6336c;
-      animation: popFade 2.5s ease forwards;
+      animation: popFade 2s ease forwards;
     }
 
     @keyframes popFade {
       from { transform: scale(0.5); opacity: 0; }
       to   { transform: scale(1.2); opacity: 1; }
     }
-
-    @media (max-width: 480px) {
-      h1 { font-size: 1.9rem; }
-      .question { font-size: 1.2rem; }
-    }
   </style>
 </head>
+
 <body>
   <div class="card">
     <h1>Nats ❤️</h1>
-    <p>Through every high and low, every tear and smile, you never left my side.</p>
-    <p>You chose me — even when I was hard to hold.</p>
+
+    <p>
+      Through every high and low, every tear and smile,
+      you never left my side.
+    </p>
+
+    <p>
+      You chose me — even when I was hard to hold.
+    </p>
+
     <div class="question">
-      Will you keep choosing me, today, tomorrow, and for all the days we grow old together? 💍
+      Will you keep choosing me, today, tomorrow,
+      and for all the days we grow old together? 💍
     </div>
-    <div class="buttons">
-      <button id="yesBtn">Yes 💖</button>
-      <button id="noBtn">No 🙈</button>
-    </div>
-    <p style="margin-top: 25px; font-style: italic;">Forever yours,<br/>Madhu ❤️</p>
+
+    <button id="yesBtn">Yes 💖</button>
+    <button id="noBtn">No 🙈</button>
+
+    <p style="margin-top: 25px; font-style: italic;">
+      Forever yours,<br/>Madhu ❤️
+    </p>
   </div>
 
   <script>
-  // Ensure DOM is ready before attaching events
-  document.addEventListener('DOMContentLoaded', () => {
-    const noBtn = document.getElementById('noBtn');
-    const yesBtn = document.getElementById('yesBtn');
+    document.addEventListener('DOMContentLoaded', () => {
+      const yesBtn = document.getElementById('yesBtn');
+      const noBtn = document.getElementById('noBtn');
 
-    if (!noBtn || !yesBtn) return; // safety guard
+      // tease if he waits 😄
+      setTimeout(() => {
+        alert('Yovvvv 😄 YES sollu 💖');
+      }, 20000);
 
-    // tease if he waits
-    setTimeout(() => {
-      alert('Yovvvv 😄 YES sollu 💖');
-    }, 20000);
-
-    noBtn.addEventListener('mouseenter', () => {
-      const x = Math.random() * 200 - 100;
-      const y = Math.random() * 200 - 100;
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
-    });
-
-    noBtn.addEventListener('click', () => {
-      alert('No option illa 😌 YES mattum dhan 💖');
-    });
-
-    const kissSound = new Audio('https://www.soundjay.com/human/kiss-1.mp3');
-
-    yesBtn.addEventListener('click', () => {
-      kissSound.play();
-
-      // Remove background image and overlays
-      document.body.classList.add('celebrate');
-      document.body.innerHTML = '';
-      document.body.style.background = '#fff0f5';
-      document.body.style.overflow = 'hidden';
-
-      // LOTS of hearts
-      for (let i = 0; i < 80; i++) {
-        setTimeout(() => {
-          const h = document.createElement('div');
-          h.className = 'heart';
-          h.innerText = '❤️';
-          h.style.left = Math.random() * 100 + 'vw';
-          h.style.fontSize = Math.random() * 24 + 24 + 'px';
-          document.body.appendChild(h);
-        }, i * 80);
-      }
-
-      // LOTS of umma emojis
-      const ummas = Array(35).fill('Umma 😘');
-      ummas.forEach((t, i) => {
-        setTimeout(() => {
-          const u = document.createElement('div');
-          u.className = 'umma';
-          u.innerText = t;
-          u.style.left = Math.random() * 80 + 10 + 'vw';
-          u.style.top = Math.random() * 80 + 10 + 'vh';
-          u.style.fontSize = Math.random() * 18 + 28 + 'px';
-          document.body.appendChild(u);
-        }, i * 200);
+      // no button running away
+      noBtn.addEventListener('mouseenter', () => {
+        const x = Math.random() * 200 - 100;
+        const y = Math.random() * 200 - 100;
+        noBtn.style.transform = `translate(${x}px, ${y}px)`;
       });
 
-      // final big message
-      setTimeout(() => {
-        const big = document.createElement('div');
-        big.style.position = 'fixed';
-        big.style.inset = '0';
-        big.style.display = 'flex';
-        big.style.alignItems = 'center';
-        big.style.justifyContent = 'center';
-        big.style.background = '#fff0f5';
-        big.style.fontSize = '3rem';
-        big.style.fontWeight = 'bold';
-        big.style.color = '#c9184a';
-        big.style.textAlign = 'center';
-        big.innerHTML = 'Umma 😘<br/>I will be your only Valentine ❤️';
-        document.body.appendChild(big);
-      }, 5000);
+      noBtn.addEventListener('click', () => {
+        alert('No option illa 😌 YES mattum dhan 💖');
+      });
+
+      const kissSound = new Audio('https://www.soundjay.com/human/kiss-1.mp3');
+
+      yesBtn.addEventListener('click', () => {
+        kissSound.play();
+
+        document.body.classList.add('celebrate');
+        document.body.innerHTML = '';
+        document.body.style.background = '#fff0f5';
+
+        // hearts
+        for (let i = 0; i < 60; i++) {
+          setTimeout(() => {
+            const h = document.createElement('div');
+            h.className = 'heart';
+            h.innerText = '❤️';
+            h.style.left = Math.random() * 100 + 'vw';
+            document.body.appendChild(h);
+          }, i * 70);
+        }
+
+        // umma emojis (controlled)
+        const ummaInterval = setInterval(() => {
+          const u = document.createElement('div');
+          u.className = 'umma';
+          u.innerText = 'Umma 😘';
+          u.style.left = Math.random() * 80 + 10 + 'vw';
+          u.style.top = Math.random() * 80 + 10 + 'vh';
+          document.body.appendChild(u);
+        }, 250);
+
+        // STOP everything + final message
+        setTimeout(() => {
+          clearInterval(ummaInterval);
+          document.querySelectorAll('.umma, .heart').forEach(e => e.remove());
+
+          const finalMsg = document.createElement('div');
+          finalMsg.style.position = 'fixed';
+          finalMsg.style.inset = '0';
+          finalMsg.style.display = 'flex';
+          finalMsg.style.flexDirection = 'column';
+          finalMsg.style.alignItems = 'center';
+          finalMsg.style.justifyContent = 'center';
+          finalMsg.style.fontSize = '2.8rem';
+          finalMsg.style.fontWeight = 'bold';
+          finalMsg.style.color = '#c9184a';
+          finalMsg.style.textAlign = 'center';
+          finalMsg.innerHTML = `
+            Umma 😘<br/>
+            You will be my Valentine forever ❤️
+          `;
+          document.body.appendChild(finalMsg);
+        }, 4000);
+      });
     });
-  });
-</script>
+  </script>
 </body>
 </html>
