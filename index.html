@@ -27,9 +27,8 @@
       content: "";
       position: fixed;
       inset: 0;
-      background: url('background: url('hands-forever.jpg') center/cover no-repeat;
-') center/cover no-repeat;
-      opacity: 0.25;
+      background: url('hands-forever.jpg') center/cover no-repeat;
+      opacity: 0.85; /* let background dominate */
       z-index: -2;
     }
 
@@ -37,12 +36,13 @@
       content: "";
       position: fixed;
       inset: 0;
-      background: rgba(255,240,245,0.7);
+      background: rgba(0,0,0,0.15); /* very light overlay */
       z-index: -1;
     }
 
     .card {
-      background: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.55); /* transparent so background dominates */
+      backdrop-filter: blur(2px);
       padding: 30px 22px;
       border-radius: 20px;
       max-width: 420px;
@@ -130,7 +130,7 @@
     const yesBtn = document.getElementById('yesBtn');
 
     setTimeout(() => {
-      alert('Yowwww 😄 YES sollu 💖');
+      alert('Yovvvvv 😄 Direct ah YES sollu 💖');
     }, 20000);
 
     noBtn.addEventListener('mouseenter', () => {
