@@ -1,210 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For My Forever</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For My Forever</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Georgia', serif;
-    }
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Georgia', serif;
+  }
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #0f172a;
-      color: #ffffff;
-      text-align: center;
-      overflow: hidden;
-    }
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0f172a;
+    color: #ffffff;
+    text-align: center;
+    overflow: hidden;
+  }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: url('hands-forever.jpg') right center / cover no-repeat;
-      filter: blur(5px);
-      transform: scale(1.15);
-      z-index: -2;
-    }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url('hands-forever.jpg') right center / cover no-repeat;
+    filter: blur(5px);
+    transform: scale(1.15);
+    z-index: -2;
+  }
 
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
-      z-index: -1;
-    }
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+    z-index: -1;
+  }
 
-    body.celebrate::before,
-    body.celebrate::after {
-      display: none;
-    }
+  body.celebrate::before,
+  body.celebrate::after {
+    display: none;
+  }
 
-    .card {
-      background: rgba(0,0,0,0.45);
-      backdrop-filter: blur(4px);
-      padding: 28px 22px;
-      border-radius: 18px;
-      max-width: 420px;
-      width: 92%;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-    }
+  .card {
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(4px);
+    padding: 28px 22px;
+    border-radius: 18px;
+    max-width: 420px;
+    width: 92%;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  }
 
-    h1 {
-      font-size: 2.3rem;
-      margin-bottom: 16px;
-      text-shadow: 0 4px 12px rgba(0,0,0,0.6);
-    }
+  h1 {
+    font-size: 2.3rem;
+    margin-bottom: 16px;
+  }
 
-    p {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      margin-bottom: 14px;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-    }
+  p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
 
-    .question {
-      font-size: 1.35rem;
-      margin: 18px 0;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.7);
-    }
+  .question {
+    font-size: 1.35rem;
+    margin: 18px 0;
+  }
 
-    button {
-      padding: 12px 26px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 30px;
-      margin: 8px;
-      cursor: pointer;
-    }
+  button {
+    padding: 12px 26px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 30px;
+    margin: 8px;
+    cursor: pointer;
+  }
 
-    #yesBtn { background:#ff8fb1; color:#fff; }
-    #noBtn  { background:#bbb; color:#333; position:relative; }
+  #yesBtn { background:#ff8fb1; color:#fff; }
+  #noBtn  { background:#bbb; color:#333; position:relative; }
 
-    .heart {
-      position: fixed;
-      font-size: 2rem;
-      animation: floatUp 4s linear forwards;
-    }
+  .msg {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: #ffd6e0;
+    font-style: italic;
+    min-height: 24px;
+  }
 
-    @keyframes floatUp {
-      from { transform: translateY(100vh); opacity: 1; }
-      to   { transform: translateY(-10vh); opacity: 0; }
-    }
-
-    .umma {
-      position: fixed;
-      font-size: 2.5rem;
-      color: #d6336c;
-      animation: popFade 2s ease forwards;
-    }
-
-    @keyframes popFade {
-      from { transform: scale(0.5); opacity: 0; }
-      to   { transform: scale(1.2); opacity: 1; }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="card">
-    <h1>Nats ❤️</h1>
-
-    <p>
-      Through every high and low, every tear and smile,
-      you never left my side.
-    </p>
-
-    <p>
-      You chose me — even when I was hard to hold.
-    </p>
-
-    <div class="question">
-      Will you keep choosing me, today, tomorrow,
-      and for all the days we grow old together? 💍
-    </div>
-
-    <button id="yesBtn">Yes 💖</button>
-    <button id="noBtn">No 🙈</button>
-
-    <p style="margin-top: 25px; font-style: italic;">
-      Forever yours,<br/>Madhu ❤️
-    </p>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const yesBtn = document.getElementById('yesBtn');
-      const noBtn = document.getElementById('noBtn');
-
-      // No button just runs away 😄 (NO alerts)
-      noBtn.addEventListener('mouseenter', () => {
-        const x = Math.random() * 200 - 100;
-        const y = Math.random() * 200 - 100;
-        noBtn.style.transform = `translate(${x}px, ${y}px)`;
-      });
-
-      const kissSound = new Audio('https://www.soundjay.com/human/kiss-1.mp3');
-
-      yesBtn.addEventListener('click', () => {
-        kissSound.play();
-
-        document.body.classList.add('celebrate');
-        document.body.innerHTML = '';
-        document.body.style.background = '#fff0f5';
-
-        // hearts
-        for (let i = 0; i < 60; i++) {
-          setTimeout(() => {
-            const h = document.createElement('div');
-            h.className = 'heart';
-            h.innerText = '❤️';
-            h.style.left = Math.random() * 100 + 'vw';
-            document.body.appendChild(h);
-          }, i * 70);
-        }
-
-        // umma emojis (temporary)
-        const ummaInterval = setInterval(() => {
-          const u = document.createElement('div');
-          u.className = 'umma';
-          u.innerText = 'Umma 😘';
-          u.style.left = Math.random() * 80 + 10 + 'vw';
-          u.style.top = Math.random() * 80 + 10 + 'vh';
-          document.body.appendChild(u);
-        }, 250);
-
-        // STOP umma + final message
-        setTimeout(() => {
-          clearInterval(ummaInterval);
-          document.querySelectorAll('.umma, .heart').forEach(e => e.remove());
-
-          const finalMsg = document.createElement('div');
-          finalMsg.style.position = 'fixed';
-          finalMsg.style.inset = '0';
-          finalMsg.style.display = 'flex';
-          finalMsg.style.flexDirection = 'column';
-          finalMsg.style.alignItems = 'center';
-          finalMsg.style.justifyContent = 'center';
-          finalMsg.style.fontSize = '2.8rem';
-          finalMsg.style.fontWeight = 'bold';
-          finalMsg.style.color = '#c9184a';
-          finalMsg.style.textAlign = 'center';
-          finalMsg.innerHTML = `
-            Umma 😘<br/>
-            You will be my Valentine forever ❤️
-          `;
-          document.body.appendChild(finalMsg);
-        }, 4000);
-      });
-    });
-  </script>
-</body>
-</html>
+  .heart {
+    position: fixed;
+    font-size: 2rem;
+    animati
