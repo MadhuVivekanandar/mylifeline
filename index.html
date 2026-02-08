@@ -85,15 +85,130 @@
   #yesBtn { background:#ff8fb1; color:#fff; }
   #noBtn  { background:#bbb; color:#333; position:relative; }
 
-  .msg {
-    margin-top: 15px;
-    font-size: 1rem;
-    color: #ffd6e0;
-    font-style: italic;
-    min-height: 24px;
-  }
-
   .heart {
     position: fixed;
     font-size: 2rem;
-    animati
+    animation: floatUp 4s linear forwards;
+  }
+
+  @keyframes floatUp {
+    from { transform: translateY(100vh); opacity: 1; }
+    to   { transform: translateY(-10vh); opacity: 0; }
+  }
+
+  .umma {
+    position: fixed;
+    font-size: 2.5rem;
+    color: #d6336c;
+    animation: popFade 2s ease forwards;
+  }
+
+  @keyframes popFade {
+    from { transform: scale(0.5); opacity: 0; }
+    to   { transform: scale(1.2); opacity: 1; }
+  }
+</style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>Nats ❤️</h1>
+
+    <p>Through every high and low, every tear and smile, you never left my side.</p>
+    <p>You chose me — even when I was hard to hold.</p>
+
+    <div class="question">
+      Will you keep choosing me, today, tomorrow, and for all the days we grow old together? 💍
+    </div>
+
+    <button id="yesBtn">Yes 💖</button>
+    <button id="noBtn">No 🙈</button>
+
+    <p style="margin-top: 25px; font-style: italic;">
+      Forever yours,<br/>Madhu ❤️
+    </p>
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const yesBtn = document.getElementById('yesBtn');
+  const noBtn  = document.getElementById('noBtn');
+
+  function moveNoButton() {
+    const x = Math.random() * 300 - 150;
+    const y = Math.random() * 300 - 150;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  }
+
+  // Make NO harder to click 😄
+  noBtn.addEventListener('mouseenter', moveNoButton);
+  noBtn.addEventListener('touchstart', moveNoButton);
+
+  // If NO is clicked
+  noBtn.addEventListener('click', () => {
+    // Vibrate phone (works on most Android phones)
+    if (navigator.vibrate) {
+      navigator.vibrate([200, 100, 200]);
+    }
+
+    alert('No only YES option 😌💖');
+    moveNoButton();
+  });
+
+  const kissSound = new Audio('https://www.soundjay.com/human/kiss-1.mp3');
+
+  yesBtn.addEventListener('click', () => {
+    kissSound.play();
+
+    document.body.classList.add('celebrate');
+    document.body.innerHTML = '';
+    document.body.style.background = '#fff0f5';
+
+    // Hearts
+    for (let i = 0; i < 60; i++) {
+      setTimeout(() => {
+        const h = document.createElement('div');
+        h.className = 'heart';
+        h.innerText = '❤️';
+        h.style.left = Math.random() * 100 + 'vw';
+        document.body.appendChild(h);
+      }, i * 70);
+    }
+
+    // Umma emojis
+    const ummaInterval = setInterval(() => {
+      const u = document.createElement('div');
+      u.className = 'umma';
+      u.innerText = 'Umma 😘';
+      u.style.left = Math.random() * 80 + 10 + 'vw';
+      u.style.top = Math.random() * 80 + 10 + 'vh';
+      document.body.appendChild(u);
+    }, 250);
+
+    // Final message
+    setTimeout(() => {
+      clearInterval(ummaInterval);
+      document.querySelectorAll('.umma, .heart').forEach(e => e.remove());
+
+      const finalMsg = document.createElement('div');
+      finalMsg.style.position = 'fixed';
+      finalMsg.style.inset = '0';
+      finalMsg.style.display = 'flex';
+      finalMsg.style.flexDirection = 'column';
+      finalMsg.style.alignItems = 'center';
+      finalMsg.style.justifyContent = 'center';
+      finalMsg.style.fontSize = '2.8rem';
+      finalMsg.style.fontWeight = 'bold';
+      finalMsg.style.color = '#c9184a';
+      finalMsg.style.textAlign = 'center';
+      finalMsg.innerHTML = `
+        Umma 😘<br/>
+        You will be my Valentine forever ❤️
+      `;
+      document.body.appendChild(finalMsg);
+    }, 4000);
+  });
+});
+</script>
+</body>
+</html>
