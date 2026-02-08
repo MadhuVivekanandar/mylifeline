@@ -1,4 +1,191 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Forever</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Georgia', serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ffe6ea, #fff0f5);
+      color: #4a2c2a;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1520975922284-9c5c3f7f5f84?auto=format&fit=crop&w=1200&q=60') center/cover no-repeat;
+      opacity: 0.25;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(255,240,245,0.7);
+      z-index: -1;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.85);
+      padding: 30px 22px;
+      border-radius: 20px;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+      color: #c94f7c;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .question {
+      font-size: 1.4rem;
+      margin: 18px 0;
+    }
+
+    .buttons { margin-top: 20px; }
+
+    button {
+      padding: 12px 26px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px;
+      margin: 8px;
+      cursor: pointer;
+    }
+
+    #yesBtn { background:#ff8fb1; color:#fff; }
+    #noBtn  { background:#bbb; color:#333; position:relative; }
+
+    .heart {
+      position: fixed;
+      font-size: 2.2rem;
+      animation: floatUp 4s linear forwards;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(100vh) scale(0.8); opacity: 1; }
+      to   { transform: translateY(-10vh) scale(1.4); opacity: 0; }
+    }
+
+    .umma {
+      position: fixed;
+      font-size: 2.5rem;
+      color: #d6336c;
+      animation: popFade 2.5s ease forwards;
+    }
+
+    @keyframes popFade {
+      from { transform: scale(0.5); opacity: 0; }
+      to   { transform: scale(1.2); opacity: 1; }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 1.9rem; }
+      .question { font-size: 1.2rem; }
+    }
+  </style>
 </head>
+<body>
+  <div class="card">
+    <h1>Natarajan ❤️</h1>
+    <p>Through every high and low, every tear and smile, you never left my side.</p>
+    <p>You chose me — even when I was hard to hold.</p>
+    <div class="question">
+      Will you keep choosing me, today, tomorrow, and for all the days we grow old together? 💍
+    </div>
+    <div class="buttons">
+      <button id="yesBtn">Yes 💖</button>
+      <button id="noBtn">No 🙈</button>
+    </div>
+    <p style="margin-top: 25px; font-style: italic;">Forever yours,<br/>Madhu ❤️</p>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+
+    setTimeout(() => {
+      alert('Inga yum wait panna vendam 😄 Direct ah YES sollu 💖');
+    }, 20000);
+
+    noBtn.addEventListener('mouseenter', () => {
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 200 - 100;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    noBtn.addEventListener('click', () => {
+      alert('No option illa 😌 YES mattum dhan 💖');
+    });
+
+    const kissSound = new Audio('https://www.soundjay.com/human/kiss-1.mp3');
+
+    yesBtn.addEventListener('click', () => {
+      kissSound.play();
+      document.body.innerHTML = '';
+
+      for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+          const h = document.createElement('div');
+          h.className = 'heart';
+          h.innerText = '❤️';
+          h.style.left = Math.random() * 100 + 'vw';
+          document.body.appendChild(h);
+        }, i * 150);
+      }
+
+      const ummas = ['Umma 😘','Umma 😘','Umma 😘','Umma 😘','Umma 😘'];
+      ummas.forEach((t, i) => {
+        setTimeout(() => {
+          const u = document.createElement('div');
+          u.className = 'umma';
+          u.innerText = t;
+          u.style.left = Math.random() * 60 + 20 + 'vw';
+          u.style.top = Math.random() * 60 + 20 + 'vh';
+          document.body.appendChild(u);
+        }, i * 600);
+      });
+
+      setTimeout(() => {
+        const big = document.createElement('div');
+        big.style.position = 'fixed';
+        big.style.inset = '0';
+        big.style.display = 'flex';
+        big.style.alignItems = 'center';
+        big.style.justifyContent = 'center';
+        big.style.background = 'rgba(255,240,245,0.9)';
+        big.style.fontSize = '2.8rem';
+        big.style.fontWeight = 'bold';
+        big.style.color = '#c9184a';
+        big.style.textAlign = 'center';
+        big.innerHTML = 'Umma 😘<br/>I will be your only Valentine ❤️';
+        document.body.appendChild(big);
+      }, 4500);
+    });
+  </script>
+</body>
 </html>
